@@ -3,6 +3,7 @@ package config
 
 import (
 	"os"
+    "github.com/luciano-personal-org/exception"
 
 	"github.com/joho/godotenv"
 )
