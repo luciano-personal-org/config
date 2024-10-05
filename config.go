@@ -77,5 +77,7 @@ func New() Config {
 			exception.PanicIfNeeded(fmt.Errorf("fatal error when reading local config: %w", err))
 		}
 	}
+
+	fmt.Println(v.AllSettings())
 	return &configImpl{v: v}
 }
