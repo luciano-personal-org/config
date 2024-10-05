@@ -39,6 +39,5 @@ func New() Config {
 			exception.PanicIfNeeded(fmt.Errorf("fatal error when reading local config: %w", err))
 		}
 	}
-
 	return &configImpl{v: v}
 }
