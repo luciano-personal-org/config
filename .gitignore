@@ -185,5 +185,3 @@ cython_debug/
 # Go workspace file
 go.work
 go.work.sum
-
-algo-trading-connector

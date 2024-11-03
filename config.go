@@ -6,9 +6,13 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/luciano-personal-org/exception"
+	"github.com/luciano-personal-org/config/config_exception"
+	exceptioncore "github.com/luciano-personal-org/exception"
 	"github.com/spf13/viper"
 )
+
+// Initialize the custom error
+var custom_error exceptioncore.TradingError
 
 // Config interface for config.
 type Config interface {
@@ -36,7 +40,11 @@ func New() Config {
 			// Config file not found; ignore error if desired
 			fmt.Printf("Local config file not found, using defaults values\n")
 		} else {
-			exception.PanicIfNeeded(fmt.Errorf("fatal error when reading local config: %w", err))
+			// exception.PanicIfNeeded(fmt.Errorf("fatal error when reading local config: %w", err))
+			custom_error = config_exception.LocalConfigError
+			custom_error.SetOriginalError(err)
+			custom_error.SetDetails("When trying to read local config from config pkg")
+			exceptioncore.DoPanic(custom_error)
 		}
 	}
 	return &configImpl{v: v}
