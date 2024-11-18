@@ -1,4 +1,4 @@
-package config_exception
+package exception
 
 import (
 	exceptioncore "github.com/luciano-personal-org/exception"
