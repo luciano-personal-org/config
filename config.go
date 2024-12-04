@@ -30,7 +30,7 @@ func (config *configImpl) Get(key string) string {
 }
 
 // New returns a new instance of the Config interface, loaded with configuration values from the specified files.
-func New() Config {
+func NewConfig() Config {
 	v := viper.New()
 	v.SetConfigType("yaml")
 	v.SetConfigFile(".env.yaml")
